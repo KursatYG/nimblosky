@@ -1,0 +1,17 @@
+export const weatherIconMap: Record<string, string> = {
+  Clear: "twemoji:sun",
+  Clouds: "mdi:weather-cloudy",
+  Rain: "mdi:weather-rainy",
+  Snow: "mdi:weather-snowy",
+  Thunderstorm: "mdi:weather-lightning",
+  Drizzle: "mdi:weather-hail",
+  Mist: "mdi:weather-fog",
+  Smoke: "mdi:weather-fog",
+  Haze: "mdi:weather-hazy",
+  Dust: "mdi:weather-fog",
+  Fog: "mdi:weather-fog",
+  Sand: "mdi:weather-fog",
+  Ash: "mdi:weather-fog",
+  Squall: "mdi:weather-windy",
+  Tornado: "mdi:weather-tornado",
+};

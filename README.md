@@ -1,54 +1,49 @@
-# React + TypeScript + Vite
+# 🌤️ NimbloSky
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**NimbloSky** is a modern weather application that provides detailed, real-time weather information in a clean and accessible interface. All weather data is available from a single page, offering both current and forecasted insights.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Current Weather Overview**  
+  Instantly view today's weather conditions, including:
+  - Temperature
+  - Feels like temperature
+  - Weather description with dynamic icons
+  - Wind, humidity, pressure
+  - Sunrise and sunset times
+  - Visibility
+  - Air quality index (AQI) with pollutant breakdown
 
-## Expanding the ESLint configuration
+- **5-Day Forecast**  
+  Displays the weather forecast for the next 5 days, each represented by a summarized view at midday (12:00 PM).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Hourly Forecast for Today**  
+  See how the weather changes throughout the day, with temperature and condition breakdown by the hour.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Air Quality Insights**  
+  Track key air components such as:
+  - NO₂, O₃, PM2.5, SO₂
+  - Overall air quality index
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Fully Responsive Design**  
+  Optimized for both desktop and mobile devices with a clean and intuitive layout.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Technologies Used
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **React & TypeScript**
+- **Tailwind CSS**
+- **OpenWeatherMap API**
+- **Iconify** for weather and UI icons
+
+## 📦 Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Create a .env file and add your OpenWeather API key
+VITE_OPENWEATHER_API_KEY=your_api_key_here
+
+# Start development server
+npm run dev
+>>>>>>> 1a39ce6 (first commit)

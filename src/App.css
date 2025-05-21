@@ -5,11 +5,17 @@
 @theme {
   --breakpoint-xs: 24rem;
 }
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+html, body{
+  @apply bg-gradient-to-t h-full bg-no-repeat bg-fixed from-[#56CCF2] to-[#2F80ED] dark:from-[#16222A] dark:to-[#3A6073];
+}
 
 @layer components {
-  .bgColor {
-    @apply bg-gradient-to-t from-[#56CCF2] to-[#2F80ED] dark:from-[#16222A] dark:to-[#3A6073];
-  }
+
 
   .textColor {
     @apply text-gray-800 dark:text-gray-200;
@@ -45,13 +51,14 @@
 
 .layout{
     display: grid;
-    grid-template-columns: 420px minmax(0,1fr);
+    grid-template-columns: 360px minmax(0,1fr);
     gap: 40px;
 }
 
-@media (max-width:1400px) {
+@media (max-width:1000px) {
     .layout{
-        grid-template-columns: 300px minmax(0,1fr);
+        grid-template-columns:minmax(0,1fr);
+        border: 1px solid red;
     }
 }
 

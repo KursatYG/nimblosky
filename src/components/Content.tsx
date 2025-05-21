@@ -1,17 +1,20 @@
 import CurrentWeather from "./CurrentWeather";
+import Footer from "./Footer";
 import Forecast from "./Forecast";
 import Highlights from "./Highlights";
+import Hours from "./Hours";
 
 const Content = () => {
   return (
-    <article className="layout mt-8">
-      <div className="grid gap-4">
+    <article className="layout mt-8 sm:overflow-y-hidden h-full">
+      <div className="lg:sticky h-fit top-0">
         <CurrentWeather />
-        <h2 className="title">Sonraki 5 Gün</h2>
-        <Forecast/>
+        <Forecast />
       </div>
-      <div>
-        <Highlights/>
+      <div className="lg:overflow-y-auto lg:h-screen">
+        <Highlights />
+        <Hours />
+        <Footer />
       </div>
     </article>
   );

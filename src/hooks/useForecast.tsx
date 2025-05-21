@@ -16,6 +16,7 @@ export const useForecast = (city: string) => {
         const geo = await fetchCities(city);
         const data = await fetchForecast(geo[0].lat, geo[0].lon);
         setForecast(data);
+        console.log(data);
       } catch (err) {
         setError((err as Error).message);
       }

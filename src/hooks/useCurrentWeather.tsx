@@ -13,7 +13,7 @@ export const useCurrentWeather = (city: string) => {
       try {
         const current = await fetchCurrentWeather(city);
         setCurrentData(current);
-        console.log(current);
+        
         
         setError(null);
       } catch (err) {

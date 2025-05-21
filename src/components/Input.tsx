@@ -44,7 +44,7 @@ export const Input = ({ setSearch }: Props) => {
         }`}
       />
       {results.length > 0 && (
-        <ul className="absolute w-full bg-[#73B3F4] dark:bg-[#738C98] border-t border-white/10 sm:rounded-b-2xl overflow-hidden sm:drop-shadow-md">
+        <ul className="absolute z-10 w-full bg-[#73B3F4] dark:bg-[#738C98] border-t border-white/10 sm:rounded-b-2xl overflow-hidden sm:drop-shadow-md">
           {results.map((city, index) => (
             <li
               key={index}

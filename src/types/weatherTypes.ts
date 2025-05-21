@@ -40,6 +40,10 @@ export interface ForecastWeather {
   main: {
     temp: number;
   };
+  wind:{
+    deg:number,
+    speed:number
+  }
   weather: {
     main: string;
     description: string;

@@ -1,5 +1,8 @@
+
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 import Content from "./components/Content";
+
 
 import Navbar from "./components/Navbar";
 import { WeatherProvider } from "./context/WeatherContext";
@@ -11,8 +14,12 @@ function App() {
         <WeatherProvider>
           <Navbar />
           <Content />
+          
+          
         </WeatherProvider>
+        
       </div>
+      <Analytics />
     </div>
   );
 }

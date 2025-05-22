@@ -16,7 +16,6 @@ export const useAirPollution = (city: string) => {
         const geo = await fetchCities(city);
         const data = await fetchAirPollution(geo[0].lat, geo[0].lon);
         setAirPollution(data);
-        console.log(data);
         
         
       } catch (err) {

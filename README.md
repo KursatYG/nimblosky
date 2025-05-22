@@ -35,6 +35,12 @@
 - **OpenWeatherMap API**
 - **Iconify** for weather and UI icons
 
+## ✨ Live Demo
+
+https://nimblosky.vercel.app/
+
+
+
 ## 📦 Setup
 
 ```bash

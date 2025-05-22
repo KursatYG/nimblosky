@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { CurrentWeatherData } from "../types/weatherTypes";
-import { fetchCurrentWeather } from "../services/weatherAPI";
+import { fetchCities, fetchCurrentWeather } from "../services/weatherAPI";
 
 export const useCurrentWeather = (city: string) => {
   const [currentData, setCurrentData] = useState<CurrentWeatherData | null>(
@@ -11,7 +11,8 @@ export const useCurrentWeather = (city: string) => {
   useEffect(() => {
     const getWeather = async (city: string) => {
       try {
-        const current = await fetchCurrentWeather(city);
+        const geo = await fetchCities(city)
+        const current = await fetchCurrentWeather(geo[0].lat, geo[0].lon);
         setCurrentData(current);
         
         

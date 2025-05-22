@@ -3,13 +3,39 @@ import Button from "./Button";
 import { Input } from "./Input";
 import { useTheme } from "../hooks/useTheme";
 import { useState } from "react";
+import { useWeather } from "../hooks/useWeather";
 
 const Navbar = () => {
+  const { setCity } = useWeather();
   const { darkMode, toggleDarkMode } = useTheme();
   const [search, setSearch] = useState<boolean>(false);
 
   const toggleSearch = () => {
     setSearch(!search);
+  };
+
+  const handleLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+
+        const response = await fetch(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=tr`
+        );
+        const data = await response.json();
+
+        if (data.city) {
+          setCity(data.city);
+        } else {
+          alert("Şehir bilgisi alınamadı.");
+        }       
+      },
+      
+      (err) => {
+        alert("Konum bilgisi alınamadı.");
+        console.error(err);
+      }
+    );
   };
 
   return (
@@ -31,8 +57,7 @@ const Navbar = () => {
           className="absolute right-2 top-1/2 -translate-y-1/2 z-10 hidden md:block"
         />
 
-        <Input setSearch={setSearch}/>
-        
+        <Input setSearch={setSearch} />
       </div>
       <div className="flex items-center gap-2 sm:gap-4">
         <Button
@@ -46,25 +71,25 @@ const Navbar = () => {
             icon={darkMode ? "si:sun-fill" : "solar:moon-bold"}
           />
         </div>
-        <Button title="Konumum" icon="mdi:location" />
+        <Button onClick={handleLocation} title="Konumum" icon="mdi:location" />
       </div>
       {search && (
-          <div className="fixed inset-0 z-50 bg-[#73B3F4] dark:bg-[#738C98] md:hidden">
-            <div className="pt-2 relative border-b border-white/10">
-              <Input setSearch={setSearch} />
-              <button
-                className="absolute right-4 top-4 z-50"
-                onClick={toggleSearch}
-              >
-                <Icon
-                  icon="material-symbols:close-rounded"
-                  width={32}
-                  height={32}
-                />
-              </button>
-            </div>
+        <div className="fixed inset-0 z-50 bg-[#6FAAF3] dark:bg-[#2C4958] md:hidden">
+          <div className="pt-2 relative border-b border-white/10">
+            <Input setSearch={setSearch} />
+            <button
+              className="absolute right-4 top-4 z-50"
+              onClick={toggleSearch}
+            >
+              <Icon
+                icon="material-symbols:close-rounded"
+                width={32}
+                height={32}
+              />
+            </button>
           </div>
-        )}
+        </div>
+      )}
     </nav>
   );
 };

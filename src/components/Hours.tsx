@@ -5,9 +5,13 @@ import { useWeather } from "../hooks/useWeather";
 
 const Hours = () => {
   const { city } = useWeather();
-  const { forecast } = useForecast(city);
+  const { forecast,error } = useForecast(city);
+
 
   const slicedList = forecast?.list.slice(0, 8);
+
+    if (error) return <p>Hata: {error}</p>;
+  if (!forecast) return null;
 
   return (
     <div className="mt-4 pb-5">
@@ -16,7 +20,7 @@ const Hours = () => {
         <ul className="flex gap-3 justify-between px-2 ">
           {slicedList?.map((item, index) => {
             const hour = new Date(item.dt * 1000).toLocaleTimeString("tr-TR", {
-              hour: "2-digit",
+              hour: "numeric",
               hour12: false,
             });
             const iconName =

@@ -1,4 +1,4 @@
-import type { GeoCity } from "../types/citiensTypes";
+import type { GeoCity} from "../types/citiensTypes";
 import type {
   AirQualityResponse,
   ForecastResponse,
@@ -16,10 +16,27 @@ export async function fetchCities(query: string): Promise<GeoCity[]> {
   return await res.json();
 }
 
-export async function fetchCurrentWeather(city: string) {
-  const url = `${BASE_URL}/weather?q=${encodeURIComponent(
-    city
-  )}${commonParams}`;
+// export async function fetchCities(query: string): Promise<GeoCity[]> {
+//   const API_KEY = import.meta.env.VITE_OPENCAGE_API_KEY;
+//   const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
+//     query
+//   )}&key=${API_KEY}&limit=5&language=tr`;
+
+//   const res = await fetch(url);
+//   if (!res.ok) throw new Error("Şehir verisi alınamadı.");
+
+//   const data = await res.json();
+
+//   return data.results.map((item: OpenCageResult) => ({
+//     name: item.components.city || item.components.town || item.components.village || item.formatted,
+//     country: item.components.country,
+//     lat: item.geometry.lat,
+//     lon: item.geometry.lng,
+//   }));
+// }
+
+export async function fetchCurrentWeather(lat:number,lon:number) {
+  const url = `${BASE_URL}/weather?lat=${lat}&lon=${lon}${commonParams}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error("Hava durumu verisi alınamadı.");
   return await res.json();

@@ -5,27 +5,26 @@
 @theme {
   --breakpoint-xs: 24rem;
 }
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
+
+
+
 
 html, body{
-  @apply bg-gradient-to-t h-full bg-no-repeat bg-fixed from-[#56CCF2] to-[#2F80ED] dark:from-[#16222A] dark:to-[#3A6073];
+  @apply bg-gradient-to-t m-0 p-0 box-border from-[#56CCF2] to-[#2F80ED] dark:from-[#16222A] dark:to-[#3A6073];
 }
 
 @layer components {
 
 
   .textColor {
-    @apply text-gray-800 dark:text-gray-200;
+    @apply text-gray-800 dark:text-gray-300;
   }
 
   .card {
-    @apply rounded-2xl p-9 bg-white/30 ;
+    @apply rounded-2xl p-9 bg-white/30 dark:bg-black/20 ;
   }
   .card-sm {
-    @apply rounded-xl p-3 bg-white/30 ;
+    @apply rounded-xl p-3 bg-white/30 dark:bg-black/20 ;
   }
 
   .title{
@@ -53,12 +52,12 @@ html, body{
     display: grid;
     grid-template-columns: 360px minmax(0,1fr);
     gap: 40px;
+    height: auto;
 }
 
 @media (max-width:1000px) {
     .layout{
         grid-template-columns:minmax(0,1fr);
-        border: 1px solid red;
     }
 }
 

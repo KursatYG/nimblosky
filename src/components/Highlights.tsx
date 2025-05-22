@@ -3,12 +3,15 @@ import { useWeather } from "../hooks/useWeather";
 import { useAirPollution } from "../hooks/useAirPollution";
 import { useCurrentWeather } from "../hooks/useCurrentWeather";
 import { formatUnixTime } from "../utils/formatTime";
+import { airPollutionQuality } from "../constants/airPollutionQuality";
 
 const Highlights = () => {
   const { city } = useWeather();
   const { airPollution, error } = useAirPollution(city);
   const { currentData } = useCurrentWeather(city);
   const components = airPollution?.list[0].components;
+  const aqiQuality = airPollution?.list[0].main.aqi;
+  const aqiQualityValue = airPollutionQuality[aqiQuality || 0];
   const visibilityInKm = Number(currentData?.visibility) / 1000;
 
   if (error) return <p>Hata: {error}</p>;
@@ -19,7 +22,10 @@ const Highlights = () => {
       <h2 className="title">Bugünün İstatistikleri</h2>
       <div className="grid gap-5 xl:grid-cols-2 grid-cols-1">
         <div className="card-sm">
-          <p className="label-2 mb-5 max-xs:text-center">Hava Kalitesi</p>
+          <div className="flex justify-between items-center mb-5">
+            <p className="label-2 max-xs:text-center">Hava Kalitesi</p>
+            <p className="font-semibold bg-white/60 dark:bg-white/20 px-3 rounded-2xl cursor-default">{aqiQualityValue}</p>
+          </div>
           <div className="flex justify-between gap-4 items-center max-xs:flex-col ">
             <Icon icon="mdi:air-filter" width={36} height={36} />
             <ul className="flex flex-wrap grow justify-between gap-2 ">
@@ -27,31 +33,41 @@ const Highlights = () => {
                 <p className="label-3">
                   PM<sub>2.5</sub>
                 </p>
-                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">{components?.pm2_5.toFixed(1)}</p>
+                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">
+                  {components?.pm2_5.toFixed(1)}
+                </p>
               </li>
               <li className="flex flex-col items-center gap-2">
                 <p className="label-3">
                   SO<sub>2</sub>
                 </p>
-                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">{components?.so2.toFixed(1)}</p>
+                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">
+                  {components?.so2.toFixed(1)}
+                </p>
               </li>
               <li className="flex flex-col items-center gap-2">
                 <p className="label-3">
                   NO<sub>2</sub>
                 </p>
-                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">{components?.no2.toFixed(1)}</p>
+                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">
+                  {components?.no2.toFixed(1)}
+                </p>
               </li>
               <li className="flex flex-col items-center gap-2">
                 <p className="label-3">
                   O<sub>3</sub>
                 </p>
-                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">{components?.o3.toFixed(1)}</p>
+                <p className="text-xl sm:text-2xl xl:text-4xl font-medium">
+                  {components?.o3.toFixed(1)}
+                </p>
               </li>
             </ul>
           </div>
         </div>
         <div className="card-sm">
-          <p className="label-2 mb-5 max-xs:text-center">Gün Doğumu & Gün Batımı</p>
+          <p className="label-2 mb-5 max-xs:text-center">
+            Gün Doğumu & Gün Batımı
+          </p>
           <div className="flex flex-wrap grow justify-between gap-2 max-xs:justify-center">
             <div className="flex gap-2 items-center">
               <Icon icon="solar:sun-bold-duotone" width={36} height={36} />
@@ -83,7 +99,10 @@ const Highlights = () => {
               width={36}
               height={36}
             />
-            <p className="text-xl sm:text-2xl xl:text-4xl font-medium"> {currentData?.main.humidity}%</p>
+            <p className="text-xl sm:text-2xl xl:text-4xl font-medium">
+              {" "}
+              {currentData?.main.humidity}%
+            </p>
           </div>
         </div>
         <div className="card-sm">
@@ -112,7 +131,10 @@ const Highlights = () => {
           <p className="label-2 mb-5">Hissedilen Sıcaklık</p>
           <div className="flex justify-between">
             <Icon icon="fluent:temperature-24-filled" width={36} height={36} />
-            <p className="text-xl sm:text-2xl xl:text-4xl font-medium"> {currentData?.main.feels_like}°</p>
+            <p className="text-xl sm:text-2xl xl:text-4xl font-medium">
+              {" "}
+              {currentData?.main.feels_like}°
+            </p>
           </div>
         </div>
       </div>

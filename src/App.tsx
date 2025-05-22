@@ -11,7 +11,6 @@ function App() {
         <WeatherProvider>
           <Navbar />
           <Content />
-
         </WeatherProvider>
       </div>
     </div>

@@ -39,12 +39,12 @@ export const Input = ({ setSearch }: Props) => {
         placeholder="Şehir girin"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        className={`h-12 pl-4 pr-10 outline-0 w-full textColor bg-[#73B3F4] dark:bg-[#738C98] ${
+        className={`h-12 pl-4 pr-10 outline-0 w-full textColor bg-[#6FAAF3] dark:bg-[#2C4958] ${
           results.length > 0 ? "rounded-t-xl rounded-b-none" : "rounded-xl"
         }`}
       />
       {results.length > 0 && (
-        <ul className="absolute z-10 w-full bg-[#73B3F4] dark:bg-[#738C98] border-t border-white/10 sm:rounded-b-2xl overflow-hidden sm:drop-shadow-md">
+        <ul className="absolute z-10 w-full bg-[#6FAAF3] dark:bg-[#2C4958] border-t border-white/10 sm:rounded-b-2xl overflow-hidden sm:drop-shadow-md">
           {results.map((city, index) => (
             <li
               key={index}
